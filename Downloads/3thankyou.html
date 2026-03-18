@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Greenfield Dental</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9F52DWS');</script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600&display=swap"></noscript>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0c3535;
+      --navy-deep: #071e1e;
+      --gold: #c49a6c;
+      --gold-light: #d4ae86;
+      --off-white: #f2f8f7;
+      --text: #1a2e2e;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy-deep);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .ty-header {
+      background: var(--navy);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(196,154,108,0.25);
+    }
+    .ty-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+    .ty-logo-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Main ── */
+    .ty-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    /* Animated checkmark */
+    .ty-check {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a9e6e, #0d7a53);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      box-shadow: 0 0 0 0 rgba(26,158,110,0.4);
+    }
+    .ty-check svg { width: 40px; height: 40px; stroke: #fff; stroke-width: 3; fill: none; }
+    .ty-check svg path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw 0.5s 0.3s ease forwards; }
+    @keyframes pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    .ty-tag {
+      display: inline-block;
+      background: rgba(196,154,108,0.15);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(196,154,108,0.3);
+      margin-bottom: 20px;
+    }
+
+    .ty-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 16px;
+      max-width: 640px;
+    }
+    .ty-h1 em { font-style: italic; color: var(--gold); }
+
+    .ty-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    /* Steps */
+    .ty-steps {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 740px;
+    }
+    .ty-step {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px 20px;
+      flex: 1;
+      min-width: 180px;
+      max-width: 220px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .ty-step:hover { border-color: rgba(196,154,108,0.4); }
+    .ty-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .ty-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .ty-step-body {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* CTAs */
+    .ty-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .ty-btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.15s;
+    }
+    .ty-btn-wa:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .ty-btn-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+    .ty-btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 15px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .ty-btn-home:hover { border-color: var(--gold); color: var(--gold); }
+
+    .ty-reassurance {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+    .ty-reassurance a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+
+    /* ── Footer ── */
+    .ty-footer {
+      background: var(--navy);
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 540px) {
+      .ty-header { padding: 16px 20px; }
+      .ty-step { min-width: 140px; }
+      .ty-ctas { flex-direction: column; align-items: center; }
+      .ty-btn-wa, .ty-btn-home { width: 100%; max-width: 320px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9F52DWS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header class="ty-header">
+  <div>
+    <div class="ty-logo-text">Greenfield Dental</div>
+    <div class="ty-logo-sub">International Dental Clinic · Hanoi</div>
+  </div>
+</header>
+
+<main class="ty-main">
+
+  <div class="ty-check">
+    <svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div class="ty-tag">Request Received</div>
+
+  <h1 class="ty-h1">You're one step closer to your <em>new smile</em></h1>
+
+  <p class="ty-sub">Your free consultation request has been sent to our team. We'll review your details and be in touch within <strong style="color:#fff;">24 hours</strong> — often much sooner.</p>
+
+  <div class="ty-steps">
+    <div class="ty-step">
+      <div class="ty-step-num">1</div>
+      <div class="ty-step-title">Request received</div>
+      <div class="ty-step-body">Your enquiry is with our patient coordinators now.</div>
+    </div>
+    <div class="ty-step">
+      <div class="ty-step-num">2</div>
+      <div class="ty-step-title">We'll contact you</div>
+      <div class="ty-step-body">Sam will reach out via WhatsApp or email within 24 hrs.</div>
+    </div>
+    <div class="ty-step">
+      <div class="ty-step-num">3</div>
+      <div class="ty-step-title">Free treatment plan</div>
+      <div class="ty-step-body">Share X-rays or photos and receive a personalised quote.</div>
+    </div>
+  </div>
+
+  <div class="ty-ctas">
+    <a class="ty-btn-wa" href="https://wa.me/84906621988?text=Hi%2C%20I%27d%20like%20to%20send%20a%20photo%20of%20my%20teeth%20for%20a%20free%20assessment." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.948-1.419A9.955 9.955 0 0011.999 22c5.523 0 10-4.477 10-10S17.522 2 11.999 2zm.001 18a8 8 0 01-4.075-1.117l-.292-.173-3.034.87.872-3.118-.19-.302A7.969 7.969 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+      Message Sam on WhatsApp
+    </a>
+    <a class="ty-btn-home" href="/">← Back to Greenfield Dental</a>
+  </div>
+
+  <p class="ty-reassurance">Questions? Email us at <a href="mailto:Hello@nhakhoagreenfield.com">Hello@nhakhoagreenfield.com</a></p>
+
+</main>
+
+<footer class="ty-footer">
+  © 2025 Greenfield Dental · 95 Trung Hoa St, Cau Giay, Hanoi, Vietnam
+</footer>
+
+<script>
+  // Fire conversion event
+  if (typeof dataLayer !== 'undefined') {
+    dataLayer.push({
+      event: 'form_submission',
+      event_category: 'Lead',
+      event_label: 'Thank You Page',
+      value: 1
+    });
+  }
+</script>
+
+</body>
+</html>
