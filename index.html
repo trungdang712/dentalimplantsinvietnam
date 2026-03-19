@@ -813,11 +813,12 @@
   }
 
   /* Treatment grid */
-  .treatment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 24px; }
+  .treatment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 24px; align-items: stretch; }
   .treat-card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     gap: 3px;
     border: 1.5px solid #d8cfc4;
     border-radius: 16px;
@@ -827,6 +828,7 @@
     transition: border-color .2s, background .2s, box-shadow .2s;
     position: relative;
     background: #fdfcfb;
+    height: 100%;
   }
   .treat-card input { position: absolute; opacity: 0; pointer-events: none; }
   .treat-card-icon {
@@ -3319,7 +3321,8 @@
   }
   @media (max-width: 600px) {
     .brand-strip { padding: 22px 20px; }
-    .brand-pill { min-width: 130px; padding: 10px 14px; }
+    .brand-strip-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; justify-items: center; }
+    .brand-pill { min-width: unset; width: 100%; padding: 10px 14px; }
     .brand-pill strong { font-size: 13px; }
   }
   .treatments-grid {
@@ -8129,6 +8132,8 @@ h1, h2, h3 {
     flex-direction: column !important;
     overflow: hidden !important;
     border-radius: 16px !important;
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   /* Image: fixed height, static — sits on top */
