@@ -610,17 +610,23 @@ fbq('track', 'PageView');
 
   /* ── MULTI-STEP FORM ── */
   /* ── FORM SECTION ── */
-  .msform-section {
+  .msform-section-wrap {
     background: var(--navy);
-    padding: 72px 6%;
+    position: relative;
+    overflow: hidden;
+  }
+  .msform-section {
+    padding: 72px 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 72px;
     align-items: start;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
-    overflow: hidden;
   }
-  .msform-section::before {
+  .msform-section-wrap::before {
     content: '';
     position: absolute;
     top: -160px; right: -160px;
@@ -2815,9 +2821,11 @@ fbq('track', 'PageView');
   .step-num { color: rgba(15,120,120,0.07) !important; }
   .journey-step h3 { color: #0a3535 !important; }
   .journey-arrow { color: var(--gold) !important; font-size: 32px !important; }
-  .msform-section {
+  .msform-section-wrap {
     background: linear-gradient(150deg, #0a5050 0%, #0f7070 45%, #0a4848 100%) !important;
-    padding: 72px 5% !important;
+  }
+  .msform-section {
+    padding: 72px 24px !important;
   }
   .msform-title { color: #fff !important; }
   .msform-sub { color: rgba(255,255,255,0.65) !important; }
@@ -5176,6 +5184,7 @@ fbq('track', 'PageView');
   </div>
 </div>
 <!-- MULTI-STEP FORM -->
+<div class="msform-section-wrap">
 <section class="msform-section" id="consultation" aria-label="Free Consultation Form">
 
   <!-- LEFT: Copy + Trust -->
@@ -5404,6 +5413,7 @@ fbq('track', 'PageView');
 
   </div>
 </section>
+</div>
 
 <!-- RISKS -->
 <section class="risks" aria-label="Understanding Dental Tourism Risks">
@@ -7483,8 +7493,7 @@ section {
 
 /* Preserve sections that are intentionally full-bleed (no horizontal pad) */
 .yt-testimonials,
-.gallery-section,
-.msform-section {
+.gallery-section {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
