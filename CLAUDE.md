@@ -44,7 +44,7 @@ Everything is in `index.html` — no framework, no bundler, no dependencies. Inl
 
 Leads are submitted through a multi-step consultation form (3 steps: Treatment → Contact → Timeline).
 
-1. **Primary:** Greenfield API (`POST https://api.greenfield.clinic/api/leads/dental-tourism`)
+1. **Primary:** Greenfield API (`POST https://api.greenfield.clinic/api/contacts/dental-tourism`)
 2. **Fallback:** Google Sheets webhook (`google-apps-script.js` — routes to `dentalvietnam` tab)
 3. **LocalStorage backup** — stores unsent leads for retry
 4. **Console logging** — for debugging
@@ -80,6 +80,7 @@ Leads are submitted through a multi-step consultation form (3 steps: Treatment �
 
 ## Conventions
 
+- **Never commit `.md` files** — markdown files (e.g. `SUMMARY-FOR-ANASS.md`, `lead-capture.md`, `SEO-DENTALVIETNAM-PROMPT.md`) are local docs only, not part of the deployed site
 - **No build process** — edit `index.html` directly
 - All CSS is inline in `<style>` tags (base styles + overrides + responsive)
 - All JS is inline in `<script>` tags at the bottom
