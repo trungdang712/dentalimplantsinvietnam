@@ -8,7 +8,7 @@
 <meta name="keywords" content="dental implants Vietnam, dental tourism Hanoi, cheap dental implants abroad, All-on-4 Vietnam, dental implants Australia savings, Greenfield Dental Hanoi">
 <meta name="author" content="Greenfield Dental">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://dentalvietnam.vn/lp-implants">
+<link rel="canonical" href="https://dentalimplantsinvietnam.com">
 <meta name="geo.region" content="VN-HN">
 <meta name="geo.placename" content="Hanoi">
 
@@ -16,22 +16,22 @@
 <meta property="og:title" content="Dental Implants in Vietnam | Save Up to 70% | Greenfield Dental Hanoi">
 <meta property="og:description" content="Same Nobel Biocare & Straumann implants as Australia — at a fraction of the price. ISO-certified clinic in Hanoi. Free consultation.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://dentalvietnam.vn/lp-implants">
-<meta property="og:image" content="https://dentalvietnam.vn/images/og-lp.jpg">
+<meta property="og:url" content="https://dentalimplantsinvietnam.com">
+<meta property="og:image" content="https://dentalimplantsinvietnam.com/images/og-lp.jpg">
 <meta property="og:locale" content="en_AU">
 <meta property="og:locale:alternate" content="en_GB">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dental Implants in Vietnam | Save Up to 70%">
 <meta name="twitter:description" content="Same implant brands as Australia. ISO-certified clinic in Hanoi. Free quote within hours.">
-<meta name="twitter:image" content="https://dentalvietnam.vn/images/og-lp.jpg">
+<meta name="twitter:image" content="https://dentalimplantsinvietnam.com/images/og-lp.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="theme-color" content="#0a8f8f">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MedicalOrganization","name":"Greenfield Dental","url":"https://dentalvietnam.vn","description":"International dental clinic in Hanoi, Vietnam specialising in implants, All-on-4, veneers and smile makeovers for international patients.","medicalSpecialty":["Dentistry","Oral Surgery","Cosmetic Dentistry"],"address":{"@type":"PostalAddress","streetAddress":"95 Trung Hoa","addressLocality":"Cau Giay, Hanoi","addressCountry":"VN"},"sameAs":["https://nhakhoagreenfield.com","https://allon4vietnam.com"],"availableService":[{"@type":"MedicalProcedure","name":"Dental Implants"},{"@type":"MedicalProcedure","name":"All-on-4 Full Arch"},{"@type":"MedicalProcedure","name":"Porcelain Veneers"},{"@type":"MedicalProcedure","name":"Smile Makeover"}]}
+{"@context":"https://schema.org","@type":"MedicalOrganization","name":"Greenfield Dental","url":"https://dentalimplantsinvietnam.com","description":"International dental clinic in Hanoi, Vietnam specialising in implants, All-on-4, veneers and smile makeovers for international patients.","medicalSpecialty":["Dentistry","Oral Surgery","Cosmetic Dentistry"],"address":{"@type":"PostalAddress","streetAddress":"95 Trung Hoa","addressLocality":"Cau Giay, Hanoi","addressCountry":"VN"},"sameAs":["https://nhakhoagreenfield.com","https://allon4vietnam.com"],"availableService":[{"@type":"MedicalProcedure","name":"Dental Implants"},{"@type":"MedicalProcedure","name":"All-on-4 Full Arch"},{"@type":"MedicalProcedure","name":"Porcelain Veneers"},{"@type":"MedicalProcedure","name":"Smile Makeover"}]}
 </script>
 
 <!-- Google Consent Mode v2 — must run BEFORE GTM -->
@@ -41,6 +41,14 @@
   gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
   if(localStorage.getItem('cookieConsent')==='accepted'){gtag('consent','update',{'analytics_storage':'granted','ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});}
 </script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WF9JRS57');</script>
+<!-- End Google Tag Manager -->
 
 <!-- Facebook Pixel -->
 <script>
@@ -645,6 +653,77 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 .success-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
 .success-msg { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
 
+/* ─── WHATSAPP MODAL ─── */
+.wa-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.wa-modal-overlay.active { display: flex; }
+.wa-modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  position: relative;
+}
+.wa-modal-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--text-soft);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+}
+.wa-modal-close:hover { color: var(--text); }
+.wa-modal-icon {
+  width: 56px; height: 56px;
+  background: #fff3e6;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 1.6rem;
+}
+.wa-modal h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.wa-modal p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.wa-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 100px;
+  transition: background 0.18s, transform 0.14s;
+}
+.wa-modal-btn:hover { background: #1fb855; transform: translateY(-1px); }
+.wa-modal-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+
 /* ─── FOOTER ─── */
 .footer {
   background: #ffffff;
@@ -751,15 +830,12 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
 <a href="#main-content" style="position:absolute;left:-9999px;top:0;z-index:9999;background:#0a8f8f;color:#fff;padding:8px 16px;border-radius:0 0 8px 8px;font-size:0.85rem;text-decoration:none" onfocus="this.style.left='0'">Skip to main content</a>
 
-<!-- GTM -->
-<script>(function(){var l=false;function load(){if(l)return;l=true;(function(w,d,s,la,i){w[la]=w[la]||[];w[la].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=la!='dataLayer'?'&l='+la:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9F52DWS');}['click','touchstart','scroll','keydown'].forEach(function(e){document.addEventListener(e,load,{once:true,passive:true});});setTimeout(load,4000);})();</script>
-
 <main id="main-content">
 
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-logo">
-    <img src="images/logo.png" alt="Greenfield Dental">
+    <img src="images/logo.webp" alt="Greenfield Dental">
   </div>
   <div class="topbar-badge"><span class="dot" aria-hidden="true"></span> Accepting new patients from Australia</div>
   <a href="tel:+84906621988" class="topbar-phone">+84 90 662 1988</a>
@@ -891,49 +967,63 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
   </div>
   <div class="gallery-grid">
     <div class="gallery-card">
-      <img src="images/before-after/ba-1.png" alt="Before and after dental implants — female patient" loading="lazy">
+      <img src="images/before-after/ba-1.webp" alt="Before and after dental implants — female patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-2.png" alt="Before and after dental implants — male patient" loading="lazy">
+      <img src="images/before-after/ba-2.webp" alt="Before and after dental implants — male patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-7.png" alt="Before and after dental implants — female patient" loading="lazy">
+      <img src="images/before-after/ba-7.webp" alt="Before and after dental implants — female patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-3.png" alt="Before and after dental implants — male patient" loading="lazy">
+      <img src="images/before-after/ba-3.webp" alt="Before and after dental implants — male patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-8.png" alt="Before and after dental implants — female patient" loading="lazy">
+      <img src="images/before-after/ba-8.webp" alt="Before and after dental implants — female patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-4.png" alt="Before and after dental implants — male patient" loading="lazy">
+      <img src="images/before-after/ba-4.webp" alt="Before and after dental implants — male patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-9.png" alt="Before and after dental implants — female patient" loading="lazy">
+      <img src="images/before-after/ba-9.webp" alt="Before and after dental implants — female patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-5.png" alt="Before and after dental implants — male patient" loading="lazy">
+      <img src="images/before-after/ba-5.webp" alt="Before and after dental implants — male patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
     <div class="gallery-card">
-      <img src="images/before-after/ba-10.png" alt="Before and after dental implants — male patient" loading="lazy">
+      <img src="images/before-after/ba-10.webp" alt="Before and after dental implants — male patient" loading="lazy">
       <div class="gallery-label"><span>Before</span><span>After</span></div>
     </div>
   </div>
 </section>
 
+<!-- WHATSAPP MODAL -->
+<div class="wa-modal-overlay" id="waModal">
+  <div class="wa-modal">
+    <button class="wa-modal-close" id="waModalClose">&times;</button>
+    <div class="wa-modal-icon">&#9888;&#65039;</div>
+    <h3>Having trouble submitting?</h3>
+    <p>Your details have been saved. You can also message us directly on WhatsApp for a faster response.</p>
+    <a href="https://wa.me/84906621988?text=Hi%20Greenfield%20Dental%2C%20I%20tried%20to%20submit%20a%20quote%20request%20on%20your%20website%20but%20had%20trouble.%20Can%20you%20help%3F" target="_blank" rel="noopener" class="wa-modal-btn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Message Us on WhatsApp
+    </a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="images/logo.png" alt="Greenfield Dental">
+      <img src="images/logo.webp" alt="Greenfield Dental">
       <span>95 Trung Hoa, Cau Giay · Hanoi, Vietnam</span>
     </div>
     <div class="footer-creds">
@@ -964,7 +1054,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 </main>
 
 <!-- GTM noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9F52DWS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WF9JRS57" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Cookie Banner -->
 <div id="cookieBanner">
@@ -987,25 +1077,80 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
 <script>
 (function () {
-  var API   = 'https://api.greenfield.clinic/api/leads/dental-tourism';
+  var API   = 'https://api.greenfield.clinic/api/contacts/dental-tourism';
   var SHEET = 'https://script.google.com/macros/s/AKfycbyZuUTZJ82bNgLtuze0B6sro0VKUWkvCUcACZKvPI7soGY5-gP8qvbrTMVr5eZrVmiuxA/exec';
+  var TTL_DAYS = 7;
+  var MAX_RETRIES = 3;
+  var RETRY_MAX_AGE_MS = 48 * 60 * 60 * 1000; // 48 hours
 
   function fireConversion() {
     try { gtag('event', 'conversion', { send_to: 'AW-11508258289/ak2wCKyC3PwZEPGryO8q' }); } catch(e) {}
     try { fbq('track', 'Lead'); } catch(e) {}
   }
+
   function toSheets(data) {
     fetch(SHEET, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).catch(function () {});
   }
-  function backup(data) {
-    try { var p = JSON.parse(localStorage.getItem('pendingLeads') || '[]'); p.push(data); localStorage.setItem('pendingLeads', JSON.stringify(p)); } catch (e) {}
-  }
+
   function showSuccess() {
+    fireConversion();
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('successState').style.display = 'block';
-    fireConversion();
   }
 
+  /* ── Layer 3: localStorage with TTL and retry metadata ── */
+  function saveToLocalStorage(payload) {
+    try {
+      var leads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
+      leads.push({ data: payload, retryCount: 0, savedAt: Date.now() });
+      localStorage.setItem('pendingLeads', JSON.stringify(leads));
+    } catch (e) {}
+  }
+
+  function retryPendingLeads() {
+    try {
+      var leads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
+      if (!leads.length) return;
+      var now = Date.now();
+      var keep = [];
+      leads.forEach(function (entry) {
+        var age = now - entry.savedAt;
+        // Remove expired leads (>7 days)
+        if (age > TTL_DAYS * 24 * 60 * 60 * 1000) return;
+        // Only retry if <48hrs old and <3 retries
+        if (age < RETRY_MAX_AGE_MS && entry.retryCount < MAX_RETRIES) {
+          fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(entry.data) })
+            .then(function (res) {
+              if (!res.ok) throw new Error();
+              // Success — remove by not adding to keep (already excluded below)
+            })
+            .catch(function () {
+              entry.retryCount++;
+              keep.push(entry);
+              localStorage.setItem('pendingLeads', JSON.stringify(keep));
+            });
+        } else {
+          keep.push(entry);
+        }
+      });
+      // Optimistic: clear list, failed retries re-add themselves in catch
+      localStorage.setItem('pendingLeads', JSON.stringify(keep));
+    } catch (e) {}
+  }
+
+  /* ── Layer 4: WhatsApp emergency modal ── */
+  function showWhatsAppModal() {
+    document.getElementById('waModal').classList.add('active');
+  }
+
+  document.getElementById('waModalClose').addEventListener('click', function () {
+    document.getElementById('waModal').classList.remove('active');
+  });
+  document.getElementById('waModal').addEventListener('click', function (e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+
+  /* ── Form submission ── */
   document.getElementById('submitBtn').addEventListener('click', function () {
     var name  = document.getElementById('fullName').value.trim();
     var code  = document.getElementById('countryCode').value;
@@ -1020,7 +1165,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
     var btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.childNodes[0].textContent = 'Sending…  ';
+    btn.childNodes[0].textContent = 'Sending\u2026  ';
 
     var payload = {
       formId:    'dental-tourism-lp',
@@ -1028,15 +1173,31 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
       phone:     code + ' ' + num,
       email:     email,
       message:   msg || '(no message)',
-      source:    'lp-implants',
+      source:    'dentalimplantsinvietnam',
       referrer:  document.referrer || '',
       timestamp: new Date().toISOString()
     };
 
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-      .then(function () { toSheets(payload); showSuccess(); })
-      .catch(function () { toSheets(payload); backup(payload); showSuccess(); });
+      .then(function (res) {
+        if (!res.ok) throw new Error('API ' + res.status);
+        // SUCCESS path: Sheets backup, show success, redirect to thank you
+        toSheets(payload);
+        showSuccess();
+        setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
+      })
+      .catch(function () {
+        // FAILURE path: Sheets backup (primary capture now), localStorage, WhatsApp modal
+        toSheets(payload);
+        saveToLocalStorage(payload);
+        showWhatsAppModal();
+        btn.disabled = false;
+        btn.childNodes[0].textContent = 'Send My Message  ';
+      });
   });
+
+  // Retry pending leads on page load
+  retryPendingLeads();
 })();
 </script>
 </body>
