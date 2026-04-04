@@ -1077,7 +1077,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
 <script>
 (function () {
-  var API   = 'https://api.greenfield.clinic/api/contacts/dental-tourism';
+  var API   = 'https://api.greenfield.clinic/api/contacts/dental-implants';
   var SHEET = 'https://script.google.com/macros/s/AKfycbyZuUTZJ82bNgLtuze0B6sro0VKUWkvCUcACZKvPI7soGY5-gP8qvbrTMVr5eZrVmiuxA/exec';
   var TTL_DAYS = 7;
   var MAX_RETRIES = 3;
@@ -1181,14 +1181,14 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (res) {
         if (!res.ok) throw new Error('API ' + res.status);
-        // SUCCESS path: Sheets backup, show success, redirect to thank you
-        toSheets(payload);
+        // SUCCESS path: Sheets backup with apiStatus, show success, redirect
+        toSheets(Object.assign({}, payload, { apiStatus: 'success', form: 'dental-implants' }));
         showSuccess();
         setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
       })
       .catch(function () {
-        // FAILURE path: Sheets backup (primary capture now), localStorage, WhatsApp modal
-        toSheets(payload);
+        // FAILURE path: Sheets backup with apiStatus (triggers email alert in Apps Script)
+        toSheets(Object.assign({}, payload, { apiStatus: 'failed', form: 'dental-implants' }));
         saveToLocalStorage(payload);
         showWhatsAppModal();
         btn.disabled = false;
