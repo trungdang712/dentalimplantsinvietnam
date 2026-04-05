@@ -5978,7 +5978,7 @@ fbq('track', 'PageView');
 
 <!-- FLOATING STICKY CTA -->
 
-<script src="detect-visitor.js?v=1" defer></script>
+<script src="detect-visitor.js?v=2" defer></script>
 <script>
 // ── Counter animation ──
 function animateCounters() {
@@ -6151,6 +6151,7 @@ async function submitLeadData(leadData, formName) {
   // Enrich with visitor geo-detection data
   var vd = window.visitorData || {};
   if (vd.country) leadData.country = leadData.country || vd.country;
+  if (vd.countryCode) leadData.countryCode = leadData.countryCode || vd.countryCode;
   if (vd.preferredLanguage) leadData.preferredLanguage = leadData.preferredLanguage || vd.preferredLanguage;
 
   // Strip empty email — DTO @IsEmail() rejects '' even with @IsOptional()
