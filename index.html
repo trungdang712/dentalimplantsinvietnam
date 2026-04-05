@@ -5342,15 +5342,9 @@ fbq('track', 'PageView');
           <label>WhatsApp / Phone</label>
           <input type="tel" id="msPhone" placeholder="+61 4xx xxx xxx" autocomplete="tel">
         </div>
-        <div class="msform-row">
-          <div class="msform-field">
-            <label>First Name</label>
-            <input type="text" id="msFirstName" placeholder="Jane" autocomplete="given-name">
-          </div>
-          <div class="msform-field">
-            <label>Last Name</label>
-            <input type="text" id="msLastName" placeholder="Smith" autocomplete="family-name">
-          </div>
+        <div class="msform-field">
+          <label>Name</label>
+          <input type="text" id="msName" placeholder="Your full name" autocomplete="name">
         </div>
       </div>
       <div class="msform-privacy">
@@ -6184,11 +6178,10 @@ async function submitLeadData(leadData, formName) {
 
 // ── Multi-step Form ──
 function submitForm() {
-  var firstName = (document.getElementById('msFirstName').value || '').trim();
-  var lastName  = (document.getElementById('msLastName').value || '').trim();
+  var name      = (document.getElementById('msName').value || '').trim();
   var email     = (document.getElementById('msEmail').value || '').trim();
   var phone     = (document.getElementById('msPhone').value || '').trim();
-  if (!firstName || !email || !phone) {
+  if (!name || !email || !phone) {
     var btn = document.querySelector('.msform-btn-submit');
     var err = document.createElement('p');
     err.style.cssText = 'color:#e05c5c;font-size:13px;margin-top:8px;text-align:center;';
@@ -6202,7 +6195,7 @@ function submitForm() {
   var notes     = (document.getElementById('msNotes').value || '').trim();
 
   submitLeadData({
-    name: firstName + ' ' + lastName,
+    name: name,
     phone: phone,
     email: email,
     treatment: treatment,
@@ -9007,10 +9000,8 @@ html.lang-he .risks-compare-col ul { padding-right: 1rem !important; padding-lef
     });
     var msPhone = document.getElementById('msPhone');
     if (msPhone) msPhone.placeholder = '+972 5x-xxx-xxxx';
-    var msFirst = document.getElementById('msFirstName');
-    if (msFirst) msFirst.placeholder = 'יוסי';
-    var msLast = document.getElementById('msLastName');
-    if (msLast) msLast.placeholder = 'כהן';
+    var msNameEl = document.getElementById('msName');
+    if (msNameEl) msNameEl.placeholder = 'השם המלא שלך';
 
     /* Timeline pills */
     var tlPills = document.querySelectorAll('.timeline-pill');
