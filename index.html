@@ -1075,6 +1075,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 })();
 </script>
 
+<script src="detect-visitor.js?v=1" defer></script>
 <script>
 (function () {
   var API   = 'https://api.greenfield.clinic/api/contacts/dental-implants';
@@ -1083,13 +1084,23 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
   var MAX_RETRIES = 3;
   var RETRY_MAX_AGE_MS = 48 * 60 * 60 * 1000; // 48 hours
 
+  // ── UTM TRACKING ──
+  var urlParams = new URLSearchParams(window.location.search);
+  var utmData = {
+    utmSource: urlParams.get('utm_source') || '',
+    utmMedium: urlParams.get('utm_medium') || '',
+    utmCampaign: urlParams.get('utm_campaign') || '',
+    utmTerm: urlParams.get('utm_term') || '',
+    utmContent: urlParams.get('utm_content') || '',
+  };
+
   function fireConversion() {
     try { gtag('event', 'conversion', { send_to: 'AW-11508258289/ak2wCKyC3PwZEPGryO8q' }); } catch(e) {}
     try { fbq('track', 'Lead'); } catch(e) {}
   }
 
   function toSheets(data) {
-    fetch(SHEET, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).catch(function () {});
+    fetch(SHEET, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }).catch(function () {});
   }
 
   function showSuccess() {
@@ -1168,7 +1179,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
     btn.childNodes[0].textContent = 'Sending\u2026  ';
 
     var payload = {
-      formId:    'dental-tourism-lp',
+      formId:    'dental-implants',
       name:      name,
       phone:     code + ' ' + num,
       email:     email,
@@ -1177,6 +1188,13 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
       referrer:  document.referrer || '',
       timestamp: new Date().toISOString()
     };
+
+    // Enrich with visitor geo-detection + UTM
+    var vd = window.visitorData || {};
+    if (vd.country) payload.country = vd.country;
+    if (vd.countryCode) payload.countryCode = vd.countryCode;
+    if (vd.preferredLanguage) payload.preferredLanguage = vd.preferredLanguage;
+    Object.assign(payload, utmData);
 
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (res) {
