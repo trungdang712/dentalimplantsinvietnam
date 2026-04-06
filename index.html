@@ -6159,6 +6159,12 @@ async function submitLeadData(leadData, formName) {
 
   var apiOk = false;
 
+  // Inject visitor geo-detection data
+  var vd = window.visitorData || {};
+  if (vd.countryCode) leadData.countryCode = leadData.countryCode || vd.countryCode;
+  if (vd.country) leadData.country = leadData.country || vd.country;
+  if (vd.preferredLanguage) leadData.preferredLanguage = leadData.preferredLanguage || vd.preferredLanguage;
+
   // Layer 1: Greenfield API
   try {
     var res = await fetch(API_BASE, {
@@ -9158,6 +9164,7 @@ html.lang-he .risks-compare-col ul { padding-right: 1rem !important; padding-lef
   });
 })();
 </script>
+<script src="detect-visitor.js?v=1" defer></script>
 
 </body>
 </html>

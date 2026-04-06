@@ -79,37 +79,38 @@ function doPost(e) {
       ]);
     }
 
-    // Email alert on API failure
+    // Email alert for every new lead
+    var source = sheetName === 'dentalvietnam' ? 'Dental Tourism Vietnam' : 'AllOn4 Vietnam';
+    var apiFlag = data.apiStatus === 'failed' ? ' ⚠ API MISSED' : '';
+    var subject = '🦷 New Lead — ' + source + apiFlag + ': ' + (data.name || 'Unknown');
+    var lines = [];
     if (data.apiStatus === 'failed') {
-      var source = sheetName === 'dentalvietnam' ? 'Dental Tourism Vietnam' : 'AllOn4 Vietnam';
-      var subject = 'ALERT: ' + source + ' Lead MISSED by API - ' + (data.name || 'Unknown');
-      var lines = [];
-      lines.push('A lead was submitted but the Greenfield API failed to capture it.');
-      lines.push('');
-      lines.push('Name: ' + (data.name || 'N/A'));
-      lines.push('Phone: ' + (data.phone || 'N/A'));
-      lines.push('Email: ' + (data.email || 'N/A'));
-      if (sheetName === 'dentalvietnam') {
-        lines.push('Treatment: ' + (data.treatment || 'N/A'));
-        lines.push('Timeline: ' + (data.timeline || 'N/A'));
-        lines.push('Country: ' + (data.country || 'N/A'));
-      } else {
-        lines.push('Condition: ' + (data.condition || 'N/A'));
-        lines.push('Travel: ' + (data.travel || 'N/A'));
-        lines.push('Estimate: ' + (data.estimate || 'N/A'));
-      }
-      lines.push('Form: ' + (data.form || 'N/A'));
-      lines.push('');
-      lines.push('UTM: ' + [data.utmSource, data.utmMedium, data.utmCampaign].filter(Boolean).join(' / '));
-      lines.push('Time: ' + new Date().toString());
-      lines.push('');
-      lines.push('Please contact this lead manually ASAP.');
-      lines.push('');
-      lines.push('-- Greenfield Lead Backup System');
-      var body = lines.join('\n');
-
-      GmailApp.sendEmail(ALERT_EMAIL, subject, body, { cc: CC_EMAIL });
+      lines.push('⚠ The Greenfield API failed to capture this lead — saved to sheet only.');
+    } else {
+      lines.push('✅ Lead captured successfully by API and sheet.');
     }
+    lines.push('');
+    lines.push('Name:  ' + (data.name || 'N/A'));
+    lines.push('Phone: ' + (data.phone || 'N/A'));
+    lines.push('Email: ' + (data.email || 'N/A'));
+    if (sheetName === 'dentalvietnam') {
+      lines.push('Treatment: ' + (data.treatment || 'N/A'));
+      lines.push('Timeline:  ' + (data.timeline || 'N/A'));
+      lines.push('Country:   ' + (data.country || 'N/A'));
+    } else {
+      lines.push('Condition: ' + (data.condition || 'N/A'));
+      lines.push('Travel:    ' + (data.travel || 'N/A'));
+      lines.push('Estimate:  ' + (data.estimate || 'N/A'));
+    }
+    lines.push('Form: ' + (data.form || 'N/A'));
+    lines.push('');
+    lines.push('UTM: ' + [data.utmSource, data.utmMedium, data.utmCampaign].filter(Boolean).join(' / '));
+    lines.push('Time: ' + new Date().toString());
+    lines.push('');
+    lines.push('-- Greenfield Lead Backup System');
+    var body = lines.join('\n');
+
+    GmailApp.sendEmail(ALERT_EMAIL, subject, body, { cc: CC_EMAIL });
 
     return ContentService
       .createTextOutput(JSON.stringify({ status: 'ok' }))
