@@ -5342,15 +5342,9 @@ fbq('track', 'PageView');
           <label>WhatsApp / Phone</label>
           <input type="tel" id="msPhone" placeholder="+61 4xx xxx xxx" autocomplete="tel">
         </div>
-        <div class="msform-row">
-          <div class="msform-field">
-            <label>First Name</label>
-            <input type="text" id="msFirstName" placeholder="Jane" autocomplete="given-name">
-          </div>
-          <div class="msform-field">
-            <label>Last Name</label>
-            <input type="text" id="msLastName" placeholder="Smith" autocomplete="family-name">
-          </div>
+        <div class="msform-field">
+          <label>Name</label>
+          <input type="text" id="msName" placeholder="Your full name" autocomplete="name">
         </div>
       </div>
       <div class="msform-privacy">
@@ -5395,18 +5389,18 @@ fbq('track', 'PageView');
       <div style="text-align:left;margin:16px 0 20px;display:flex;flex-direction:column;gap:12px;">
         <div style="display:flex;align-items:flex-start;gap:12px;">
           <span style="background:rgba(196,154,108,0.25);color:var(--gold);font-size:12px;font-weight:700;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</span>
-          <span style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5;">A specialist (not a salesperson) reviews your case — <strong style="color:#fff;">typically within 2 hours</strong></span>
+          <span style="font-size:14px;color:#555;line-height:1.5;">A specialist (not a salesperson) reviews your case — <strong style="color:#1a1a1a;">typically within 2 hours</strong></span>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;">
           <span style="background:rgba(196,154,108,0.25);color:var(--gold);font-size:12px;font-weight:700;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</span>
-          <span style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5;">You receive a <strong style="color:#fff;">personalised treatment plan, exact costs, and implant options</strong> by email and WhatsApp</span>
+          <span style="font-size:14px;color:#555;line-height:1.5;">You receive a <strong style="color:#1a1a1a;">personalised treatment plan, exact costs, and implant options</strong> by email and WhatsApp</span>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;">
           <span style="background:rgba(196,154,108,0.25);color:var(--gold);font-size:12px;font-weight:700;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</span>
-          <span style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5;">No obligation to proceed — review everything with your partner or dentist first</span>
+          <span style="font-size:14px;color:#555;line-height:1.5;">No obligation to proceed — review everything with your partner or dentist first</span>
         </div>
       </div>
-      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;">Want to share this with your partner before your call? Forward them the email you'll receive.</p>
+      <p style="font-size:12px;color:#999;margin-bottom:16px;">Want to share this with your partner before your call? Forward them the email you'll receive.</p>
       <a href="https://wa.me/84906621988?text=Hi%2C%20I%20just%20submitted%20my%20assessment%20on%20the%20Greenfield%20website" target="_blank" rel="noopener noreferrer" class="msform-success-wa">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp Us Now
@@ -5984,6 +5978,7 @@ fbq('track', 'PageView');
 
 <!-- FLOATING STICKY CTA -->
 
+<script src="detect-visitor.js?v=2" defer></script>
 <script>
 // ── Counter animation ──
 function animateCounters() {
@@ -6153,6 +6148,15 @@ function fireConversions(formName, apiOk) {
 
 // Core submission handler — 5-layer pattern
 async function submitLeadData(leadData, formName) {
+  // Enrich with visitor geo-detection data
+  var vd = window.visitorData || {};
+  if (vd.country) leadData.country = leadData.country || vd.country;
+  if (vd.countryCode) leadData.countryCode = leadData.countryCode || vd.countryCode;
+  if (vd.preferredLanguage) leadData.preferredLanguage = leadData.preferredLanguage || vd.preferredLanguage;
+
+  // Strip empty email — DTO @IsEmail() rejects '' even with @IsOptional()
+  if (!leadData.email) delete leadData.email;
+
   var apiOk = false;
 
   // Layer 1: Greenfield API
@@ -6184,11 +6188,10 @@ async function submitLeadData(leadData, formName) {
 
 // ── Multi-step Form ──
 function submitForm() {
-  var firstName = (document.getElementById('msFirstName').value || '').trim();
-  var lastName  = (document.getElementById('msLastName').value || '').trim();
+  var name      = (document.getElementById('msName').value || '').trim();
   var email     = (document.getElementById('msEmail').value || '').trim();
   var phone     = (document.getElementById('msPhone').value || '').trim();
-  if (!firstName || !email || !phone) {
+  if (!name || !email || !phone) {
     var btn = document.querySelector('.msform-btn-submit');
     var err = document.createElement('p');
     err.style.cssText = 'color:#e05c5c;font-size:13px;margin-top:8px;text-align:center;';
@@ -6202,7 +6205,7 @@ function submitForm() {
   var notes     = (document.getElementById('msNotes').value || '').trim();
 
   submitLeadData({
-    name: firstName + ' ' + lastName,
+    name: name,
     phone: phone,
     email: email,
     treatment: treatment,
@@ -6383,7 +6386,7 @@ function submitHeroForm() {
   }
 
   submitLeadData({
-    name: '',
+    name: '(Website inquiry)',
     phone: phone,
     email: email,
     source: 'Hero Form',
@@ -9007,10 +9010,8 @@ html.lang-he .risks-compare-col ul { padding-right: 1rem !important; padding-lef
     });
     var msPhone = document.getElementById('msPhone');
     if (msPhone) msPhone.placeholder = '+972 5x-xxx-xxxx';
-    var msFirst = document.getElementById('msFirstName');
-    if (msFirst) msFirst.placeholder = 'יוסי';
-    var msLast = document.getElementById('msLastName');
-    if (msLast) msLast.placeholder = 'כהן';
+    var msNameEl = document.getElementById('msName');
+    if (msNameEl) msNameEl.placeholder = 'השם המלא שלך';
 
     /* Timeline pills */
     var tlPills = document.querySelectorAll('.timeline-pill');
