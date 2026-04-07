@@ -4,3 +4,6 @@ node_modules/
 .env
 .env.*
 .vercel
+
+# Local dev notes — markdown is never deployed on this static site
+*.md
