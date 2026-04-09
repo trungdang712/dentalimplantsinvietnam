@@ -1115,6 +1115,8 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
   function showSuccess() {
     fireConversion();
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'form_submit_success' });
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('successState').style.display = 'block';
   }
