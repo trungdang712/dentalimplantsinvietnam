@@ -1210,11 +1210,25 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (res) {
-        if (!res.ok) throw new Error('API ' + res.status);
-        // SUCCESS path: Sheets backup with apiStatus, show success, redirect
-        toSheets(Object.assign({}, payload, { apiStatus: 'success', form: 'dental-implants' }));
-        showSuccess();
-        setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
+        if (res.ok) {
+          // SUCCESS path: Sheets backup with apiStatus, show success, redirect
+          toSheets(Object.assign({}, payload, { apiStatus: 'success', form: 'dental-implants' }));
+          showSuccess();
+          setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
+          return;
+        }
+        if (res.status === 429) {
+          // Rate-limited (5 req/min/IP) — the lead is NOT lost: it's in the sheet
+          // (team gets the lead email either way) and in localStorage for retry on
+          // the next visit. This page redirects on success, so no in-page retry is
+          // possible; log distinctly so the ⚠ "API MISSED" alert doesn't fire.
+          toSheets(Object.assign({}, payload, { apiStatus: 'rate-limited (auto-retry)', form: 'dental-implants' }));
+          saveToLocalStorage(payload);
+          showSuccess();
+          setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
+          return;
+        }
+        throw new Error('API ' + res.status);
       })
       .catch(function () {
         // FAILURE path: Sheets backup with apiStatus (triggers email alert in Apps Script)
