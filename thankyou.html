@@ -160,6 +160,10 @@ h1 {
 <!-- GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2WG2BXG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<!-- Shared lead runtime: flushes any queued lead (429/offline) after the
+     redirect from index.html — the queue is shared via localStorage. -->
+<script src="https://lead.greenfield.clinic/lead-capture/v1.js" defer></script>
+
 <!-- Conversion tracking — fires once per session -->
 <script>
 (function () {

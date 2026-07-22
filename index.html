@@ -1086,31 +1086,20 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
 </script>
 
 <script src="detect-visitor.js?v=1" defer></script>
+<!-- Shared Greenfield lead-capture runtime (5-layer safety net) — one copy
+     for all landing pages. Source: quotation-v2 repo, public/lead-capture/v1.js. -->
+<script src="https://lead.greenfield.clinic/lead-capture/v1.js" defer></script>
 <script>
 (function () {
-  var API   = 'https://quotation-indol.vercel.app/api/public/lead';
-  var SHEET = 'https://script.google.com/macros/s/AKfycbyZuUTZJ82bNgLtuze0B6sro0VKUWkvCUcACZKvPI7soGY5-gP8qvbrTMVr5eZrVmiuxA/exec';
-  var TTL_DAYS = 7;
-  var MAX_RETRIES = 3;
-  var RETRY_MAX_AGE_MS = 48 * 60 * 60 * 1000; // 48 hours
-
-  // ── UTM TRACKING ──
-  var urlParams = new URLSearchParams(window.location.search);
-  var utmData = {
-    utmSource: urlParams.get('utm_source') || '',
-    utmMedium: urlParams.get('utm_medium') || '',
-    utmCampaign: urlParams.get('utm_campaign') || '',
-    utmTerm: urlParams.get('utm_term') || '',
-    utmContent: urlParams.get('utm_content') || '',
-  };
+  // ── LEAD CAPTURE via the shared GFLeads runtime (lead-capture/v1.js) ──
+  // UTM capture, visitorData enrichment, sheet log, localStorage queue
+  // (migrates the old 'pendingLeads' key), 429 handling and retries all live
+  // in the shared script. This page keeps validation, payload build, its
+  // WhatsApp modal (page CSS uses .active — waMode 'none') and success UX.
 
   function fireConversion() {
     try { gtag('event', 'conversion', { send_to: 'AW-11508258289/ak2wCKyC3PwZEPGryO8q' }); } catch(e) {}
     try { fbq('track', 'Lead'); } catch(e) {}
-  }
-
-  function toSheets(data) {
-    fetch(SHEET, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }).catch(function () {});
   }
 
   function showSuccess() {
@@ -1121,47 +1110,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
     document.getElementById('successState').style.display = 'block';
   }
 
-  /* ── Layer 3: localStorage with TTL and retry metadata ── */
-  function saveToLocalStorage(payload) {
-    try {
-      var leads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
-      leads.push({ data: payload, retryCount: 0, savedAt: Date.now() });
-      localStorage.setItem('pendingLeads', JSON.stringify(leads));
-    } catch (e) {}
-  }
-
-  function retryPendingLeads() {
-    try {
-      var leads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
-      if (!leads.length) return;
-      var now = Date.now();
-      var keep = [];
-      leads.forEach(function (entry) {
-        var age = now - entry.savedAt;
-        // Remove expired leads (>7 days)
-        if (age > TTL_DAYS * 24 * 60 * 60 * 1000) return;
-        // Only retry if <48hrs old and <3 retries
-        if (age < RETRY_MAX_AGE_MS && entry.retryCount < MAX_RETRIES) {
-          fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(entry.data) })
-            .then(function (res) {
-              if (!res.ok) throw new Error();
-              // Success — remove by not adding to keep (already excluded below)
-            })
-            .catch(function () {
-              entry.retryCount++;
-              keep.push(entry);
-              localStorage.setItem('pendingLeads', JSON.stringify(keep));
-            });
-        } else {
-          keep.push(entry);
-        }
-      });
-      // Optimistic: clear list, failed retries re-add themselves in catch
-      localStorage.setItem('pendingLeads', JSON.stringify(keep));
-    } catch (e) {}
-  }
-
-  /* ── Layer 4: WhatsApp emergency modal ── */
+  /* ── WhatsApp emergency modal (page-owned) ── */
   function showWhatsAppModal() {
     document.getElementById('waModal').classList.add('active');
   }
@@ -1201,47 +1150,26 @@ body { font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh
       timestamp: new Date().toISOString()
     };
 
-    // Enrich with visitor geo-detection + UTM
-    var vd = window.visitorData || {};
-    if (vd.country) payload.country = vd.country;
-    if (vd.countryCode) payload.countryCode = vd.countryCode;
-    if (vd.preferredLanguage) payload.preferredLanguage = vd.preferredLanguage;
-    Object.assign(payload, utmData);
+    // visitorData + UTM enrichment happens inside GFLeads.submit.
 
-    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-      .then(function (res) {
-        if (res.ok) {
-          // SUCCESS path: Sheets backup with apiStatus, show success, redirect
-          toSheets(Object.assign({}, payload, { apiStatus: 'success', form: 'dental-implants' }));
-          showSuccess();
-          setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
-          return;
-        }
-        if (res.status === 429) {
-          // Rate-limited (5 req/min/IP) — the lead is NOT lost: it's in the sheet
-          // (team gets the lead email either way) and in localStorage for retry on
-          // the next visit. This page redirects on success, so no in-page retry is
-          // possible; log distinctly so the ⚠ "API MISSED" alert doesn't fire.
-          toSheets(Object.assign({}, payload, { apiStatus: 'rate-limited (auto-retry)', form: 'dental-implants' }));
-          saveToLocalStorage(payload);
-          showSuccess();
-          setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
-          return;
-        }
-        throw new Error('API ' + res.status);
-      })
-      .catch(function () {
-        // FAILURE path: Sheets backup with apiStatus (triggers email alert in Apps Script)
-        toSheets(Object.assign({}, payload, { apiStatus: 'failed', form: 'dental-implants' }));
-        saveToLocalStorage(payload);
+    // accepted = 2xx OR queued 429 (delayed lead, not a lost one) → success UX.
+    // Hard failure → page's own WhatsApp modal + re-enable the button.
+    var submitP = window.GFLeads
+      ? GFLeads.submit(payload, { formName: 'dental-implants', waMode: 'none' })
+      : fetch('https://lead.greenfield.clinic/api/public/lead', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        }).then(function (res) { return { accepted: res.ok }; }).catch(function () { return { accepted: false }; });
+    submitP.then(function (r) {
+      if (r.accepted) {
+        showSuccess();
+        setTimeout(function () { window.location.href = '/thankyou.html'; }, 1500);
+      } else {
         showWhatsAppModal();
         btn.disabled = false;
         btn.childNodes[0].textContent = 'Send My Message  ';
-      });
+      }
+    });
   });
-
-  // Retry pending leads on page load
-  retryPendingLeads();
 })();
 </script>
 <script src="clinic-info-sync.js" defer></script>
